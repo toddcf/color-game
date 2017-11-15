@@ -1,0 +1,16 @@
+header {
+	background-color: #9fb0cb;
+	color: #fff;
+}
+
+main {
+	min-height: 100vh;
+}
+
+.square {
+	background-color: orange;
+	border: #000 2px solid;
+	border-radius: 10%;
+	height: 300px;
+	width: 300px;
+}
