@@ -1,12 +1,5 @@
 // An array of six colors:
-var colors = [
-	"rgb(255, 0, 0)",
-	"rgb(255, 255, 0)",
-	"rgb(0, 255, 0)",
-	"rgb(0, 255, 255)",
-	"rgb(0, 0, 255)",
-	"rgb(255, 0, 255)"
-];
+var colors = generateRandomColors( 6 );
 
 // Loop through all squares and assign a color to be each one's background:
 var squares = document.querySelectorAll( ".square" );
@@ -54,8 +47,38 @@ function changeColors( color ) {
 
 };
 
-function pickColor () {
+function pickColor() {
 	// Choose random number between 1 and the number of colors in the array (3 for easy, 6 for hard):
 	var random = Math.floor( Math.random() * colors.length );
 	return colors[ random ];
+};
+
+function randomColor() {
+
+	// Pick a "red" from 0 to 255:
+	var red = Math.floor( Math.random() * 256 );
+	// Pick a "green" from 0 to 255:
+	var green = Math.floor( Math.random() * 256 );
+	// Pick a "blue" from 0 to 255:
+	var blue = Math.floor( Math.random() * 256 );
+
+	// Plug RGB values into string and return it:
+	return "rgb(" + red + ", " + green + ", " + blue +")";
+};
+
+function generateRandomColors( qty ) {
+
+	// Make an array.
+	var arr = [];
+	
+	// Add qty random colors to array.
+	for ( var i = 0; i < qty; i++ ) {
+
+		// Get random color and push into array:
+		arr.push( randomColor() );
+	}
+
+	// Return that array
+	return arr;
+
 };
