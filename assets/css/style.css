@@ -21,6 +21,10 @@ h1 {
 	margin: 0;
 }
 
+#colorDisplay {
+	text-transform: uppercase;
+}
+
 #container {
 	margin: 0 auto;
 	max-width: 600px;
