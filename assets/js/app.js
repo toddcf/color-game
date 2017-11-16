@@ -11,6 +11,7 @@ colorDisplay.textContent = pickedColor;
 
 // Message Display:
 var messageDisplay = document.getElementById( "message" );
+var header = document.getElementById( "header" );
 
 for ( var i = 0; i < squares.length; i++ ) {
 	
@@ -28,6 +29,7 @@ for ( var i = 0; i < squares.length; i++ ) {
 			// Display message:
 			messageDisplay.textContent = "Correct!";
 			changeColors( clickedColor );
+			header.style.background = clickedColor;
 		}
 		else {
 			// Match the square's bg color to the body's bg color:
