@@ -1,3 +1,5 @@
+// NOTE: RGB(158, 178, 130) is an aweseome, Autechre-like color!
+
 // An array of six colors:
 var colors = generateRandomColors( 6 );
 
@@ -9,43 +11,68 @@ var pickedColor = pickColor();
 var colorDisplay = document.getElementById( "colorDisplay" );
 colorDisplay.textContent = pickedColor;
 
+// Reset Button:
+var resetButton = document.getElementById( "reset" );
+resetButton.addEventListener( "click", function() {
+
+	// Generate all new colors
+	colors = generateRandomColors( 6 );
+	// Pick new random color from array
+	pickedColor = pickColor();
+	// Change display color in header:
+	colorDisplay.textContent = pickedColor;
+	// Change colors of squares on page.
+	squareColors();
+	// Ensure button text says New Colors:
+	resetButton.textContent = "New Colors";
+	// Clear messageDisplay:
+	messageDisplay.textContent = "";
+});
+
 // Message Display:
 var messageDisplay = document.getElementById( "message" );
 var header = document.getElementById( "header" );
 
-for ( var i = 0; i < squares.length; i++ ) {
+function squareColors() {
+
+	for ( var i = 0; i < squares.length; i++ ) {
 	
-	// Add initial colors to squares:
-	squares[ i ].style.backgroundColor = colors[ i ];
+		// Add initial colors to squares:
+		squares[ i ].style.backgroundColor = colors[ i ];
 
-	// Add click listeners to squares:
-	squares[ i ].addEventListener( "click", function() {
-		
-		// Grab color of clicked square:
-		var clickedColor = this.style.backgroundColor;
+		// Add click listeners to squares:
+		squares[ i ].addEventListener( "click", function() {
+			
+			// Grab color of clicked square:
+			var clickedColor = this.style.backgroundColor;
 
-		// Compare color to pickedColor:
-		if ( clickedColor === pickedColor ) {
-			// Display message:
-			messageDisplay.textContent = "Correct!";
-			changeColors( clickedColor );
-			header.style.background = clickedColor;
-		}
-		else {
-			// Match the square's bg color to the body's bg color:
-			this.style.backgroundColor = "#232323";
-			// Display message:
-			messageDisplay.textContent = "Incorrect - Try Again";
-		}
+			// Compare color to pickedColor:
+			if ( clickedColor === pickedColor ) {
+				// Display message:
+				messageDisplay.textContent = "Correct!";
+				changeColors( clickedColor );
+				resetButton.textContent = "Play Again";
+			}
+			else {
+				// Match the square's bg color to the body's bg color:
+				this.style.backgroundColor = "#232323";
+				// Display message:
+				messageDisplay.textContent = "Incorrect - Try Again";
+			}
 
-	});
-}
+		});
+	
+	}
+
+};
 
 function changeColors( color ) {
 
 	for ( var i = 0; i < squares.length; i++ ) {
 		squares[ i ].style.backgroundColor = color;
 	}
+
+	header.style.background = color;
 
 };
 
@@ -84,3 +111,5 @@ function generateRandomColors( qty ) {
 	return arr;
 
 };
+
+squareColors();
