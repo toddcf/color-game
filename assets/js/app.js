@@ -27,6 +27,9 @@ resetButton.addEventListener( "click", function() {
 	resetButton.textContent = "New Colors";
 	// Clear messageDisplay:
 	messageDisplay.textContent = "";
+	// Reset header's bg color:
+	header.style.background = "";
+	
 });
 
 // Message Display:
