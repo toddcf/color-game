@@ -1,3 +1,9 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	background-color: #232323;
 }
@@ -7,10 +13,12 @@ header {
 	/*background: linear-gradient(to right,#051d46 0,#1d3f6f 100%);*/
 	background: linear-gradient(to right,#051d46 0,#345f9b 100%);
 	color: #fff;
+	padding: 50px 0;
+	text-align: center;
 }
 
 h1 {
-	color: #fff;
+	margin: 0;
 }
 
 #container {
@@ -19,7 +27,7 @@ h1 {
 }
 
 .square {
-	background-color: orange;
+	/*background-color: orange;*/
 	/*border: #000 2px solid;*/
 	border-radius: 10%;
 	width: 30%;
