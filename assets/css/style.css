@@ -1,3 +1,7 @@
+body {
+	background-color: #232323;
+}
+
 header {
 	/*background-color: #9fb0cb;*/
 	/*background: linear-gradient(to right,#051d46 0,#1d3f6f 100%);*/
@@ -5,14 +9,21 @@ header {
 	color: #fff;
 }
 
-main {
-	min-height: 100vh;
+h1 {
+	color: #fff;
+}
+
+#container {
+	margin: 0 auto;
+	max-width: 600px;
 }
 
 .square {
 	background-color: orange;
-	border: #000 2px solid;
+	/*border: #000 2px solid;*/
 	border-radius: 10%;
-	height: 250px;
-	width: 250px;
+	width: 30%;
+	padding-bottom: 30%;
+	float: left;
+	margin: 1.66%;
 }
