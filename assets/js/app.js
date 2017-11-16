@@ -11,6 +11,8 @@ var pickedColor = pickColor();
 var colorDisplay = document.getElementById( "colorDisplay" );
 colorDisplay.textContent = pickedColor;
 
+// BUTTONS
+
 // Reset Button:
 var resetButton = document.getElementById( "reset" );
 resetButton.addEventListener( "click", function() {
@@ -30,6 +32,22 @@ resetButton.addEventListener( "click", function() {
 	// Reset header's bg color:
 	header.style.background = "";
 	
+});
+
+// "Hard" Button
+var hardButton = document.getElementById( "hard" );
+
+hardButton.addEventListener( "click", function() {
+	easyButton.classList.remove( "selected" );
+	hardButton.classList.add( "selected" );
+});
+
+// "Easy" Button
+var easyButton = document.getElementById( "easy" );
+
+easyButton.addEventListener( "click", function() {
+	hardButton.classList.remove( "selected" );
+	easyButton.classList.add( "selected" );
 });
 
 // Message Display:
