@@ -40,6 +40,23 @@ var hardButton = document.getElementById( "hard" );
 hardButton.addEventListener( "click", function() {
 	easyButton.classList.remove( "selected" );
 	hardButton.classList.add( "selected" );
+
+	colors = generateRandomColors( 6 );
+	pickedColor = pickColor();
+	colorDisplay.textContent = pickedColor;
+
+	for ( var i = 0; i < squares.length; i++ ) {
+		
+		squares[ i ].style.background = colors[ i ];
+		
+		// Make sure all 6 squares are showing:
+		squares[ i ].style.display = "block";
+
+	}
+
+	// Reset header's bg color:
+	header.style.background = "";
+
 });
 
 // "Easy" Button
@@ -66,6 +83,9 @@ easyButton.addEventListener( "click", function() {
 		}
 
 	}
+
+	// Reset header's bg color:
+	header.style.background = "";
 
 });
 
