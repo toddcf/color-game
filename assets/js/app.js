@@ -7,6 +7,8 @@ var colors = generateRandomColors( 6 );
 var squares = document.querySelectorAll( ".square" );
 var pickedColor = pickColor();
 
+var qtySquares = 6;
+
 // Set the displayed RGB numbers in the header:
 var colorDisplay = document.getElementById( "colorDisplay" );
 colorDisplay.textContent = pickedColor;
@@ -18,7 +20,7 @@ var resetButton = document.getElementById( "reset" );
 resetButton.addEventListener( "click", function() {
 
 	// Generate all new colors
-	colors = generateRandomColors( 6 );
+	colors = generateRandomColors( qtySquares );
 	// Pick new random color from array
 	pickedColor = pickColor();
 	// Change display color in header:
@@ -41,7 +43,9 @@ hardButton.addEventListener( "click", function() {
 	easyButton.classList.remove( "selected" );
 	hardButton.classList.add( "selected" );
 
-	colors = generateRandomColors( 6 );
+	qtySquares = 6;
+
+	colors = generateRandomColors( qtySquares );
 	pickedColor = pickColor();
 	colorDisplay.textContent = pickedColor;
 
@@ -67,7 +71,9 @@ easyButton.addEventListener( "click", function() {
 	hardButton.classList.remove( "selected" );
 	easyButton.classList.add( "selected" );
 
-	colors = generateRandomColors( 3 );
+	qtySquares = 3;
+
+	colors = generateRandomColors( qtySquares );
 	pickedColor = pickColor();
 	colorDisplay.textContent = pickedColor;
 
