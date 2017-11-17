@@ -85,6 +85,7 @@ button:hover {
 	padding-bottom: 30%;
 	float: left;
 	margin: 1.66%;
+	transition: background 0.5s;
 }
 
 .square:hover {
