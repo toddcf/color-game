@@ -6,6 +6,9 @@
 
 body {
 	background-color: #232323;
+	font-family: Lato;
+	font-weight: 400;
+	letter-spacing: 2px;
 }
 
 header {
@@ -16,20 +19,19 @@ header {
 	background: -o-linear-gradient(left,#051d46 0,#345f9b 100%);
 	background: linear-gradient(to right,#051d46 0,#345f9b 100%);
 	color: #fff;
-	padding: 50px 0;
+	padding: 40px 0;
 	text-align: center;
-}
-
-.header-override {
-
 }
 
 h1 {
 	margin: 0;
+	font-weight: 300;
+	text-transform: uppercase;
+	line-height: 1.25;
 }
 
 #colorDisplay {
-	text-transform: uppercase;
+	font-size: 200%;
 }
 
 .messageBoard {
@@ -45,7 +47,7 @@ h1 {
 }
 
 #container {
-	margin: 0 auto;
+	margin: 40px auto 0 auto;
 	max-width: 600px;
 }
 
