@@ -17,83 +17,35 @@ colorDisplay.textContent = pickedColor;
 
 // Reset Button:
 var resetButton = document.getElementById( "reset" );
+
 resetButton.addEventListener( "click", function() {
 
-	// Generate all new colors
-	colors = generateRandomColors( qtySquares );
-	// Pick new random color from array
-	pickedColor = pickColor();
-	// Change display color in header:
-	colorDisplay.textContent = pickedColor;
-	// Change colors of squares on page.
-	squareColors();
-	// Ensure button text says New Colors:
-	resetButton.textContent = "New Colors";
-	// Clear messageDisplay:
-	messageDisplay.textContent = "";
-	// Reset header's bg color:
-	header.style.background = "";
+	reset();
 	
 });
 
-// "Hard" Button
-var hardButton = document.getElementById( "hard" );
+// Mode Buttons:
+var modeButtons = document.querySelectorAll( ".mode" );
 
-hardButton.addEventListener( "click", function() {
-	easyButton.classList.remove( "selected" );
-	hardButton.classList.add( "selected" );
+for ( var i = 0; i < modeButtons.length; i++ ) {
 
-	qtySquares = 6;
-
-	colors = generateRandomColors( qtySquares );
-	pickedColor = pickColor();
-	colorDisplay.textContent = pickedColor;
-
-	for ( var i = 0; i < squares.length; i++ ) {
+	modeButtons[ i ].addEventListener( "click", function() {
 		
-		squares[ i ].style.background = colors[ i ];
+		// Hardcode: Remove "selected" class from mode buttons first:
+		modeButtons[ 0 ].classList.remove( "selected" );
+		modeButtons[ 1 ].classList.remove( "selected" );
 		
-		// Make sure all 6 squares are showing:
-		squares[ i ].style.display = "block";
+		// Then add it back to the one that was just clicked on:
+		this.classList.add( "selected" );
 
-	}
+		// MODE setting:
+		this.textContent === "Easy" ? qtySquares = 3 : qtySquares = 6;
 
-	// Reset header's bg color:
-	header.style.background = "";
+		reset();
 
-});
+	});
 
-// "Easy" Button
-var easyButton = document.getElementById( "easy" );
-
-easyButton.addEventListener( "click", function() {
-	
-	hardButton.classList.remove( "selected" );
-	easyButton.classList.add( "selected" );
-
-	qtySquares = 3;
-
-	colors = generateRandomColors( qtySquares );
-	pickedColor = pickColor();
-	colorDisplay.textContent = pickedColor;
-
-	for ( var i = 0; i < squares.length; i++ ) {
-		
-		// If the square has an index, give it a new color:
-		if ( colors[ i ] ) {
-			squares[ i ].style.background = colors[ i ];
-		}
-		// Otherwise, hide the square:
-		else {
-			squares[ i ].style.display = "none";
-		}
-
-	}
-
-	// Reset header's bg color:
-	header.style.background = "";
-
-});
+}
 
 // Message Display:
 var messageDisplay = document.getElementById( "message" );
@@ -175,6 +127,41 @@ function generateRandomColors( qty ) {
 
 	// Return that array
 	return arr;
+
+};
+
+function reset() {
+
+	// Generate all new colors
+	colors = generateRandomColors( qtySquares );
+	// Pick new random color from array
+	pickedColor = pickColor();
+	// Change display color in header:
+	colorDisplay.textContent = pickedColor;
+	// Change colors of squares on page.
+	squareColors();
+	// Ensure button text says New Colors:
+	resetButton.textContent = "New Colors";
+	// Clear messageDisplay:
+	messageDisplay.textContent = "";
+	// Reset header's bg color:
+	header.style.background = "";
+
+	for ( var i = 0; i < squares.length; i++ ) {
+		
+		// If the square has an index, give it a new color:
+		if ( colors[ i ] ) {
+			// First make sure all squares are visible:
+			squares[ i ].style.display = "block";
+			// Then assign the color:
+			squares[ i ].style.backgroundColor = colors[ i ];
+		}
+		// Otherwise, hide the square:
+		else {
+			squares[ i ].style.display = "none";
+		}
+
+	}
 
 };
 
