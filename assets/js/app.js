@@ -1,63 +1,46 @@
 // NOTE: RGB(158, 178, 130) is an aweseome, Autechre-like color!
 
-// An array of six colors:
-var colors = generateRandomColors( 6 );
-
-// Loop through all squares and assign a color to be each one's background:
-var squares = document.querySelectorAll( ".square" );
-var pickedColor = pickColor();
-
 var qtySquares = 6;
+var colors = [];
+var pickedColor;
 
+var squares = document.querySelectorAll( ".square" );
 // Set the displayed RGB numbers in the header:
 var colorDisplay = document.getElementById( "colorDisplay" );
-colorDisplay.textContent = pickedColor;
-
-// BUTTONS
-
-// Reset Button:
-var resetButton = document.getElementById( "reset" );
-
-resetButton.addEventListener( "click", function() {
-
-	reset();
-	
-});
-
-// Mode Buttons:
-var modeButtons = document.querySelectorAll( ".mode" );
-
-for ( var i = 0; i < modeButtons.length; i++ ) {
-
-	modeButtons[ i ].addEventListener( "click", function() {
-		
-		// Hardcode: Remove "selected" class from mode buttons first:
-		modeButtons[ 0 ].classList.remove( "selected" );
-		modeButtons[ 1 ].classList.remove( "selected" );
-		
-		// Then add it back to the one that was just clicked on:
-		this.classList.add( "selected" );
-
-		// MODE setting:
-		this.textContent === "Easy" ? qtySquares = 3 : qtySquares = 6;
-
-		reset();
-
-	});
-
-}
-
 // Message Display:
 var messageDisplay = document.getElementById( "message" );
 var header = document.getElementById( "header" );
+var resetButton = document.getElementById( "reset" );
+var modeButtons = document.querySelectorAll( ".mode" );
 
-function squareColors() {
+init();
 
+function init() {
+
+	for ( var i = 0; i < modeButtons.length; i++ ) {
+
+		// Set event listeners for mode buttons:
+		modeButtons[ i ].addEventListener( "click", function() {
+			
+			// Hardcode: Remove "selected" class from mode buttons first:
+			modeButtons[ 0 ].classList.remove( "selected" );
+			modeButtons[ 1 ].classList.remove( "selected" );
+			
+			// Then add it back to the one that was just clicked on:
+			this.classList.add( "selected" );
+
+			// MODE setting:
+			this.textContent === "Easy" ? qtySquares = 3 : qtySquares = 6;
+
+			reset();
+
+		});
+
+	}
+
+	// Set up each square:
 	for ( var i = 0; i < squares.length; i++ ) {
 	
-		// Add initial colors to squares:
-		squares[ i ].style.backgroundColor = colors[ i ];
-
 		// Add click listeners to squares:
 		squares[ i ].addEventListener( "click", function() {
 			
@@ -81,6 +64,22 @@ function squareColors() {
 		});
 	
 	}
+
+	// Now reset the screen:
+	reset();
+
+}
+
+// BUTTONS
+
+// Reset Button:
+resetButton.addEventListener( "click", function() {
+	reset();
+});
+
+function squareColors() {
+
+	
 
 };
 
@@ -164,5 +163,3 @@ function reset() {
 	}
 
 };
-
-squareColors();
