@@ -46,8 +46,27 @@ hardButton.addEventListener( "click", function() {
 var easyButton = document.getElementById( "easy" );
 
 easyButton.addEventListener( "click", function() {
+	
 	hardButton.classList.remove( "selected" );
 	easyButton.classList.add( "selected" );
+
+	colors = generateRandomColors( 3 );
+	pickedColor = pickColor();
+	colorDisplay.textContent = pickedColor;
+
+	for ( var i = 0; i < squares.length; i++ ) {
+		
+		// If the square has an index, give it a new color:
+		if ( colors[ i ] ) {
+			squares[ i ].style.background = colors[ i ];
+		}
+		// Otherwise, hide the square:
+		else {
+			squares[ i ].style.display = "none";
+		}
+
+	}
+
 });
 
 // Message Display:
