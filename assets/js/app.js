@@ -17,6 +17,21 @@ init();
 
 function init() {
 
+	setupModeBtns();
+	setupSquares();
+	reset();
+
+}
+
+// BUTTONS
+
+// Reset Button:
+resetButton.addEventListener( "click", function() {
+	reset();
+});
+
+function setupModeBtns() {
+
 	for ( var i = 0; i < modeButtons.length; i++ ) {
 
 		// Set event listeners for mode buttons:
@@ -38,7 +53,10 @@ function init() {
 
 	}
 
-	// Set up each square:
+}
+
+function setupSquares() {
+
 	for ( var i = 0; i < squares.length; i++ ) {
 	
 		// Add click listeners to squares:
@@ -65,23 +83,7 @@ function init() {
 	
 	}
 
-	// Now reset the screen:
-	reset();
-
 }
-
-// BUTTONS
-
-// Reset Button:
-resetButton.addEventListener( "click", function() {
-	reset();
-});
-
-function squareColors() {
-
-	
-
-};
 
 function changeColors( color ) {
 
@@ -137,8 +139,6 @@ function reset() {
 	pickedColor = pickColor();
 	// Change display color in header:
 	colorDisplay.textContent = pickedColor;
-	// Change colors of squares on page.
-	squareColors();
 	// Ensure button text says New Colors:
 	resetButton.textContent = "New Colors";
 	// Clear messageDisplay:
